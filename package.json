@@ -1,0 +1,39 @@
+{
+  "name": "ferrous",
+  "version": "0.0.1",
+  "description": "React data handling close to the metal",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "mocha --reporter spec --compilers js:babel-core/register --bail",
+    "build": "rm -rf format/* && babel --presets es2015 --optional runtime src --out-dir dist",
+    "watch": "nodemon -e js -w src --exec 'npm run build'",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scienceai/ferrous.git"
+  },
+  "keywords": [
+    "react",
+    "data"
+  ],
+  "author": "Robin Berjon",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/scienceai/ferrous/issues"
+  },
+  "homepage": "https://github.com/scienceai/ferrous#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel": "6.3.26",
+    "babel-cli": "6.4.5",
+    "babel-core": "6.4.5",
+    "babel-eslint": "5.0.0-beta6",
+    "babel-preset-es2015": "6.3.13",
+    "eslint": "1.10.3",
+    "jsdom": "7.2.2",
+    "mocha": "2.3.4",
+    "nodemon": "1.8.1"
+  }
+}
