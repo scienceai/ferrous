@@ -1,21 +1,26 @@
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+
+import CounterModel from './counter-model';
+import hoc from './hoc';
 
 class Counter extends React.Component {
-  constructor () {
-    super();
-    this.inc = () => {};
-    this.dec = () => {};
+  componentWillMount () {
+    let store = this.props.$store;
+    this.inc = store.increment.bind(store);
+    this.dec = store.decrement.bind(store);
   }
   render () {
     return (
       <div>
-        <span>{ this.props.counter }</span>
+        <span>{ this.props.count }</span>
         <button onClick={this.inc}>+</button>
         <button onClick={this.dec}>-</button>
       </div>
     );
   }
 }
+let CNT = hoc(Counter, new CounterModel);
 
-React.render(<Counter/>, document.getElementById('app'));
+ReactDOM.render(<CNT $id='counter'/>, document.getElementById('app'));
