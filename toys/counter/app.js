@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import CounterModel from './counter-model';
-import hoc from './hoc';
+import hoc from '../hoc';
 
 class Counter extends React.Component {
   componentWillMount () {
