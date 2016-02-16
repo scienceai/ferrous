@@ -1,6 +1,6 @@
 {
   "name": "ferrous",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React data handling close to the metal",
   "main": "dist/index.js",
   "scripts": {
