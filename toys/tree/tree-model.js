@@ -4,7 +4,6 @@ import shortid from 'shortid';
 
 let content = {
   $root: {
-    label:    'Root',
     id:       '$root',
     children: [],
     isRoot:   true
@@ -15,12 +14,11 @@ export let tree = new StoreEmitter();
 export function state (id) {
   return content[id];
 }
-export function addChild (label, parentId) {
+export function addChild (parentId) {
   let child = {
         id:       shortid.generate(),
         children: [],
         isRoot:   false,
-        label,
       }
     , parent = content[parentId]
   ;
