@@ -1,5 +1,5 @@
 
-import StoreEmitter from '../store-emitter';
+import { StoreEmitter } from '../..';
 
 let count = 0;
 

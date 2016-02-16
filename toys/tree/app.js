@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { tree, state, addChild, deleteItem } from './tree-model';
-import hoc from '../hoc';
+import { ferrous } from '../..';
 
 const Tree = ({ id, isRoot, children }) => {
   return (
@@ -21,6 +21,6 @@ const Tree = ({ id, isRoot, children }) => {
     </div>
   );
 };
-let TreeBit = hoc(Tree, tree, state);
+let TreeBit = ferrous(Tree, tree, state);
 
 ReactDOM.render(<TreeBit $id='$root'/>, document.getElementById('app'));

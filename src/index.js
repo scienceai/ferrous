@@ -1,7 +1,8 @@
 
 import React from 'react';
+import { EventEmitter } from 'events';
 
-export default function hoc (Wrapped, store, state) {
+export function ferrous (Wrapped, store, state) {
   return class HOC extends React.Component {
     constructor () {
       super();
@@ -29,4 +30,16 @@ export default function hoc (Wrapped, store, state) {
       return this.wrappedElement;
     }
   };
+}
+
+export class StoreEmitter extends EventEmitter {
+  onID (id, handler) {
+    this.on(`$ferrous$${id}`, handler);
+  }
+  removeIDListener (id, handler) {
+    this.removeListener(`$ferrous$${id}`, handler);
+  }
+  updateID (id, data) {
+    this.emit(`$ferrous$${id}`, id, data);
+  }
 }
