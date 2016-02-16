@@ -1,0 +1,6 @@
+scratch
+toys/
+src/
+node_modules
+.gitignore
+.eslintrc
