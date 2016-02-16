@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { counter, state, increment, decrement } from './counter-model';
-import { ferrous } from '../..';
+import { ferrous, Provider } from '../..';
 
 const Counter = ({ count }) => {
   return (
@@ -14,6 +14,10 @@ const Counter = ({ count }) => {
     </div>
   );
 };
-let CNT = ferrous(Counter, counter, state);
-
-ReactDOM.render(<CNT $id='counter'/>, document.getElementById('app'));
+let CNT = ferrous(Counter, state);
+ReactDOM.render(
+  <Provider store={counter}>
+    <CNT $id='counter'/>
+  </Provider>,
+  document.getElementById('app')
+);

@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { tree, state, addChild, deleteItem } from './tree-model';
-import { ferrous } from '../..';
+import { ferrous, Provider } from '../..';
 
 const Tree = ({ id, isRoot, children }) => {
   return (
@@ -21,6 +21,10 @@ const Tree = ({ id, isRoot, children }) => {
     </div>
   );
 };
-let TreeBit = ferrous(Tree, tree, state);
-
-ReactDOM.render(<TreeBit $id='$root'/>, document.getElementById('app'));
+let TreeBit = ferrous(Tree, state);
+ReactDOM.render(
+  <Provider store={tree}>
+    <TreeBit $id='$root'/>
+  </Provider>,
+  document.getElementById('app')
+);
