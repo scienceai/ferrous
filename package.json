@@ -5,10 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha --reporter spec --compilers js:babel-core/register --bail",
-    "build": "rm -rf format/* && babel --presets es2015 --optional runtime src --out-dir dist",
-    "watch": "concurrent --kill-others \"npm run watch-lib\" \"npm run watch-counter\"",
+    "build": "rm -rf format/* && babel --presets react,es2015 --optional runtime src --out-dir dist",
+    "watch": "concurrent --kill-others \"npm run watch-lib\" \"npm run watch-counter\" \"npm run watch-tree\"",
     "watch-lib": "nodemon -e js -w src --exec 'npm run build'",
     "watch-counter": "watchify toys/counter/app.js --verbose --ignore-watch=\"**/static/**\" -o toys/counter/counter.min.js",
+    "watch-tree": "watchify toys/tree/app.js --verbose --ignore-watch=\"**/static/**\" -o toys/tree/tree.min.js",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -41,7 +42,8 @@
     "eslint": "1.10.3",
     "jsdom": "7.2.2",
     "mocha": "2.3.4",
-    "nodemon": "1.8.1"
+    "nodemon": "1.8.1",
+    "shortid": "2.2.4"
   },
   "browserify": {
     "transform": [

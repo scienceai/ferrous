@@ -1,12 +1,24 @@
 
 import { EventEmitter } from 'events';
 
-export default class CounterModel extends EventEmitter {
-  default () {
-    if (typeof this.counter === 'undefined') this.counter = 0;
-    return { count: this.counter };
-  }
-  increment () { this.counter++; this._up(); }
-  decrement () { this.counter--; this._up(); }
-  _up () { this.emit('update', 'counter', { count: this.counter }); }
+let count = 0;
+
+// XXX
+// maybe we want to merge store and state, it would make some sense
+// but the rest should remain nicely as functions
+export let counter = new EventEmitter();
+export function state (id) {
+  if (id === 'counter') return { count };
+}
+export function increment () {
+  count++;
+  signal();
+}
+export function decrement () {
+  count--;
+  signal();
+}
+
+function signal () {
+  counter.emit('update', 'counter', { count });
 }
