@@ -10,16 +10,16 @@ export default function hoc (Wrapped, store, state) {
     handleUpdate (id, data) {
       this.dirty = true;
       this.forceUpdate();
-      this.wrappedElement = <Wrapped {...data} $id={this.props.$id} $store={store} key={this.props.$id}/>;
+      this.wrappedElement = <Wrapped {...data} $id={this.props.$id} $store={store}/>;
     }
     componentWillMount () {
-      store.on('update', this.handleUpdate);
+      store.onID(this.props.$id, this.handleUpdate);
       this.dirty = true;
       let data = state(this.props.$id);
-      this.wrappedElement = <Wrapped {...data} $id={this.props.$id} $store={store} key={this.props.$id}/>;
+      this.wrappedElement = <Wrapped {...data} $id={this.props.$id} $store={store}/>;
     }
     componentWillUnmount () {
-      store.removeListener('update', this.handleUpdate);
+      store.removeIDListener(this.props.$id, this.handleUpdate);
     }
     shouldComponentUpdate () {
       return this.dirty;

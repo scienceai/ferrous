@@ -1,12 +1,9 @@
 
-import { EventEmitter } from 'events';
+import StoreEmitter from '../store-emitter';
 
 let count = 0;
 
-// XXX
-// maybe we want to merge store and state, it would make some sense
-// but the rest should remain nicely as functions
-export let counter = new EventEmitter();
+export let counter = new StoreEmitter();
 export function state (id) {
   if (id === 'counter') return { count };
 }
@@ -20,5 +17,5 @@ export function decrement () {
 }
 
 function signal () {
-  counter.emit('update', 'counter', { count });
+  counter.updateID('counter', { count });
 }
