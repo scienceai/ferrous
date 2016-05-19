@@ -27,8 +27,8 @@
   },
   "homepage": "https://github.com/scienceai/ferrous#readme",
   "dependencies": {
-    "react": "0.14.7",
-    "react-dom": "0.14.7"
+    "react": "15.0.2",
+    "react-dom": "15.0.2"
   },
   "devDependencies": {
     "babel": "6.3.26",

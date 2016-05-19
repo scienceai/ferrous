@@ -9,16 +9,19 @@ export function ferrous (Wrapped, state) {
       super();
       this.handleUpdate = this.handleUpdate.bind(this);
     }
+    makeElement (data) {
+      return <Wrapped {...data} {...this.props} $id={this.props.$id}/>;
+    }
     handleUpdate (id, data) {
       this.dirty = true;
       this.forceUpdate();
-      this.wrappedElement = <Wrapped {...data} $id={this.props.$id}/>;
+      this.wrappedElement = this.makeElement(data);
     }
     componentWillMount () {
       this.context.store.onID(this.props.$id, this.handleUpdate);
       this.dirty = true;
       let data = state(this.props.$id);
-      this.wrappedElement = <Wrapped {...data} $id={this.props.$id}/>;
+      this.wrappedElement = this.makeElement(data);
     }
     componentWillUnmount () {
       this.context.store.removeIDListener(this.props.$id, this.handleUpdate);
